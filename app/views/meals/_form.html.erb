@@ -1,0 +1,29 @@
+<%=form_for @meals do |meal| %>
+	<div class="field">
+		<%= meal.label :name %> <br>
+		<%= meal.text_field :name %>
+	</div>
+	<div class="field">
+		<%= meal.label :description %> </br>
+		<%= meal.text_area :description %>
+	</div>
+	<div class="field">
+		<%= meal.label :servings %></br>
+		<%= meal.number_field :servings %>
+	</div> <br>
+	<%= meal.submit "Save" %>
+<% end %>
+<!-- <br><br>
+<p>Ingredient 1</p>
+<input id="ingredient1" name="ingredient" type="text" />
+<br>
+
+<p>Ingredient 2</p>
+<input id="ingredient2" name="ingredient" type="text" />
+<br>
+
+<p>Ingredient 3</p>
+<input id="ingredient3" name="ingredient" type="text" />
+<br>
+
+<input name="commit" type="submit" /> -->

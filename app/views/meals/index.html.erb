@@ -1,0 +1,26 @@
+<h1>Home</h2>
+
+<%= link_to 'New Meal', new_meal_path %>
+
+<table>
+	
+	<tr>
+		<th width="20%">Meal name</th>
+		<th width="50%">Description</th>
+		<th width="10%">Servings</th>
+		<th width="20%">Other actions</th>
+		<th></th>
+	</tr>
+	<% @meals.each do |meal| %>
+	<tr>
+		<td align=center><%= link_to meal.name, edit_meal_path(meal) %></td>
+		<td align=center><%= meal.description %></td>
+		<td align=center><%= meal.servings %></td>
+		<td align=center>
+			<%= link_to "Edit", edit_meal_path(meal) %>
+			<%= link_to "Delete", meal, method: :delete, data: {confirm: "Are you sure?"} %>
+		</td>
+
+	</tr>
+	<% end %>
+</table>
