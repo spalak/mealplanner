@@ -1,0 +1,12 @@
+<h1>Edit a meal</h1>
+
+<%= render 'form' %>
+
+<h2> Add ingredient </h2>
+<%= form_tag(:url => {:action => "add_meal_ingredient", :id => @meal}, :method => "post") do %>
+	<%= label_tag(:ingredient_entry, "New ingredient:") %>
+	<%= text_field_tag(:ingredient_entry) %>
+	<%= submit_tag("Add") %>
+<% end %>
+
+<%= link_to "Cancel", meals_path %>

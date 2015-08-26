@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
+  resources :ingredients do
+    member do
+      get :add_meal_ingredients
+      post :add_meal_ingredients
+    end
+  end
   resources :meals
-  resources :ingredients
+
+    
+  
+
+  # do
+  #   resources :ingredients
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718222105) do
+ActiveRecord::Schema.define(version: 20150719021539) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20150718222105) do
     t.string  "name",        limit: 255
     t.text    "description", limit: 65535
     t.integer "servings",    limit: 4
+  end
+
+  create_table "meals_ingredients", id: false, force: :cascade do |t|
+    t.integer  "meal_id",       limit: 4
+    t.integer  "ingredient_id", limit: 4
+    t.integer  "quantity",      limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end

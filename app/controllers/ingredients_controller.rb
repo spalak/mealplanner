@@ -29,6 +29,12 @@ class IngredientsController < ApplicationController
 		redirect_to ingredients_path
 	end
 
+	def add_meal_ingredients
+		@meal = Meal.find(params[:id])
+		@ingredient = @meal.ingredients(ingredient_params)
+	end
+
+
 	private
 
 	def ingredient_params

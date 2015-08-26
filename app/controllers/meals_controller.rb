@@ -4,11 +4,11 @@ class MealsController < ApplicationController
 	end
 
 	def new
-		@meals = Meal.new
+		@meal = Meal.new
 	end
 
 	def edit
-		@meals = Meal.find(params[:id])
+		@meal = Meal.find(params[:id])
 	end
 
 	def create
@@ -36,5 +36,7 @@ class MealsController < ApplicationController
 		def meal_params
 			params.require(:meal).permit(:name, :description, :servings)
 		end
+
+		
 
 end
