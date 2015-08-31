@@ -1,7 +1,0 @@
-<%=form_for @meal, :url => {:action => "update_meal_ingredient", :id => @meal} do |meal| %>
-	
-	<div class="field">
-		<%= meal.collection_select(:ingredient_ids, Ingredient.all, :id, :name, prompt: true) %>
-	</div>
-	<%= meal.submit "Save" %>
-<% end %>

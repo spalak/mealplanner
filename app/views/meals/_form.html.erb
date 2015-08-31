@@ -15,25 +15,7 @@
 <% end %>
 <br>
 
-<ul>
-<%= @meal.ingredients.each do |ingredient| %>
-	<li> <%= ingredient[:name] %> </li>
-<% end %>
-</ul>
 
-
-<table>
-	
-	<% Ingredient.all.each do |ingredient| %>
-	<tr>
-		<td align=center><%= ingredient.name %></td>
-		<td align=center>
-			<%= link_to "Add", edit_meal_path(ingredient) %>
-		</td>
-
-	</tr>
-	<% end %>
-</table>
 
 
 

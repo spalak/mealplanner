@@ -1,7 +1,31 @@
-<h1>Edit a meal</h1>
-
-<%= render 'form' %>
-
+<h1>Edit a meal</h1> 
 
 <%= link_to "Cancel", meals_path %>
+
+<br><br>
+<%= render 'form' %>
+
+<h2> Ingredients in this meal </h2>
+<table>
+<% @meal.meals_ingredients.each do |meals_ingredient| %>
+	<tr>
+		<td> <%= meals_ingredient.ingredient.name %> </td>
+		<td> <%= meals_ingredient.quantity %> </td>
+		<td> <%= link_to "Delete", [meals_ingredient.meal, meals_ingredient], method: :delete %> </td>
+	</tr>
+<% end %>
+</table>
+
+<h2> Add ingredients to this meal </h2>
+<%= form_for([@meal, @meal.meals_ingredients.build]) do |ingredient| %>
+	<%= ingredient.label "Ingredient" %>
+	<%= ingredient.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+	<%= ingredient.label :quantity %>
+	<%= ingredient.number_field :quantity %>
+	<%= ingredient.submit "Add" %>
+<% end %>
+
+
+
+
 

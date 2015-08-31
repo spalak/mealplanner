@@ -1,6 +1,6 @@
 class MealsIngredients < ActiveRecord::Migration
   def change
-  	create_table :meals_ingredients, id: false do |t|
+  	create_table :meals_ingredients do |t|
       t.references :meal, :ingredient
       t.integer :quantity
 

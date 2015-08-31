@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :ingredients do
-    member do
-      get :add_meal_ingredients
-      post :add_meal_ingredients
-    end
+  resources :ingredients
+  resources :meals do
+    resources :meals_ingredients
   end
-  resources :meals
 
     
   

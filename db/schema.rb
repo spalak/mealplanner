@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150719021539) do
     t.integer "servings",    limit: 4
   end
 
-  create_table "meals_ingredients", id: false, force: :cascade do |t|
+  create_table "meals_ingredients", force: :cascade do |t|
     t.integer  "meal_id",       limit: 4
     t.integer  "ingredient_id", limit: 4
     t.integer  "quantity",      limit: 4

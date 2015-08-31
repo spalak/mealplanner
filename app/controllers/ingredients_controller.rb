@@ -31,7 +31,8 @@ class IngredientsController < ApplicationController
 
 	def add_meal_ingredients
 		@meal = Meal.find(params[:id])
-		@ingredient = @meal.ingredients(ingredient_params)
+		@meal.ingredients.update(ingredient_params)
+		redirect_to meals_path(@meal)
 	end
 
 
