@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :meals do
     resources :meals_ingredients
+    collection do
+      get 'menu'
+    end
   end
 
     
