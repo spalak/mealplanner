@@ -1,0 +1,13 @@
+<h1> Menu for the week </h1>
+
+<%= "Sunday meal: " + @weekMenu[0].name %> <br>
+<%= "Monday meal: " + 	@weekMenu[1].name %> <br>
+<%= "Tuesday meal: " + @weekMenu[2].name %> <br>
+<%= "Wednesday meal: " + @weekMenu[3].name %> <br>
+<%= "Thursday meal: " + @weekMenu[4].name %> <br>
+<%= "Friday meal: " + @weekMenu[5].name %> <br>
+<%= "Saturday meal: " + @weekMenu[6].name %> <br><br>
+
+
+<%= link_to 'Generate alternate menu for week', menu_meals_path%> <br><br>
+<%= link_to "Cancel", meals_path %>
