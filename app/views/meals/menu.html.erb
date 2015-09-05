@@ -1,8 +1,7 @@
 <h1> Menu for the week </h1>
 
-
 <% i = 0 %>
-<% while i < 7 %>
+<% while i < @num %>
 	<% if @weekMenu[i] %>
 		<%= @daysOfWeek[i] + ": " + @weekMenu[i].name %> <br>
 	<% else %>
@@ -11,7 +10,7 @@
 	<% i += 1 %>
 <% end %>
 
-<h2> Grocery list </h2>
+<h2><%="Grocery list for " + pluralize(@num.to_s, 'day') %></h2>
 <% @ingQuantityHash.each do |ingredient_id, ingredient_quantity| %>
 	<ul>
 		<li><%= Ingredient.find(ingredient_id).name + ": " + ingredient_quantity.to_s %> </li>
@@ -19,7 +18,7 @@
 <% end %>
 
 <br><br>
-<%= link_to 'Generate new menu', menu_meals_path%>
+<%= render 'form_menu' %>	
 <br><br>
 <%= link_to 'Return to meals', meals_path %>
 

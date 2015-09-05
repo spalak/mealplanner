@@ -41,10 +41,15 @@ class MealsController < ApplicationController
 			randMealHash[meal] = rand
 		end
 
+		@num = params[:menu][:num].to_i
+
+
 		sortedMealArray = randMealHash.sort_by { |meal, randNum| randNum }
 		@weekMenu = []
 
-		sortedMealArray.first(7).each do |meal, randNum|
+		numDays = @num
+
+		sortedMealArray.first(numDays).each do |meal, randNum|
 			@weekMenu << meal
 		end
 
@@ -52,16 +57,20 @@ class MealsController < ApplicationController
 
 		@daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-		@ingQuantityHash = {}
-			@weekMenu.each do |meal| #loop through each meal  NOTE - this needs to be the final array, not ALL meals
-				meal.meals_ingredients.each do |meals_ingredient| #loop through each ingredient in every meal
-				if @ingQuantityHash.has_key?(meals_ingredient.ingredient_id)
+		ingredientsList(@weekMenu)
+	end
+
+	def ingredientsList(menu)
+		@ingQuantityHash = Hash.new(0)
+		menu.each do |meal| #loop through each meal  NOTE - this needs to be the final array, not ALL meals
+			meal.meals_ingredients.each do |meals_ingredient| #loop through each ingredient in every meal
+				# if @ingQuantityHash.has_key?(meals_ingredient.ingredient_id)
 					#below code is problem, because it's calling quantity for all meals_ingredients,
 					#but I only want the quantity for the meals_ingredients that matches the relevant ingredient.2
 					@ingQuantityHash[meals_ingredient.ingredient_id] += meals_ingredient.quantity # add incremental quantity
-				else
-					@ingQuantityHash[meals_ingredient.ingredient_id] = meals_ingredient.quantity #add the ingredient info with the key value being the ingredient name
-				end
+				# else
+				# 	@ingQuantityHash[meals_ingredient.ingredient_id] = meals_ingredient.quantity #add the ingredient info with the key value being the ingredient name
+				# end
 			end
 		end
 

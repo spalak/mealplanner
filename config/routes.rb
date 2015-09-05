@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+
+  root to: 'meals#index'
   resources :ingredients
   resources :meals do
     resources :meals_ingredients
     collection do
       get 'menu'
+      post 'menu'
     end
   end
 
