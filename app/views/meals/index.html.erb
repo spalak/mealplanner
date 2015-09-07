@@ -1,5 +1,9 @@
 <h1>Home</h1>
 
+<%= link_to "Sign In", new_user_session_path%>
+<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<br><br>
+
 <%= link_to 'New Meal', new_meal_path %>
 
 <table>

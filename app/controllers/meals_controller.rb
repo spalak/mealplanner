@@ -1,41 +1,44 @@
 class MealsController < ApplicationController
+
+	before_action :authenticate_user!
+
 	def index
-		@meals = Meal.all
+		@meals = current_user.meals.all
 	end
 
 	def new
-		@meal = Meal.new
+		@meal = current_user.meals.new
 	end
 
 	def edit
-		@meal = Meal.find(params[:id])
+		@meal = current_user.meals.find(params[:id])
 	end
 
 	def create
-		@meal = Meal.create(meal_params)
+		@meal = current_user.meals.create(meal_params)
 		redirect_to meals_path(@meal)
 	end
 
 	def update
-		@meal = Meal.find(params[:id])
+		@meal = current_user.meals.find(params[:id])
 		@meal.update(meal_params)
 		redirect_to meals_path
 	end
 
 	def destroy
-		@meal = Meal.find(params[:id])
+		@meal = current_user.meal.find(params[:id])
 		@meal.destroy
 		redirect_to meals_path
 	end
 
 
 	def show
-		@meal = Meal.find(params[:id])
+		@meal = current_user.meals.find(params[:id])
 	end
 
 	def menu
 		randMealHash = {}
-		@meals = Meal.all
+		@meals = current_user.meals.all
 
 		@meals.each do |meal|
 			randMealHash[meal] = rand

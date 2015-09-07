@@ -5,7 +5,7 @@
 	<% if @weekMenu[i] %>
 		<%= @daysOfWeek[i] + ": " + @weekMenu[i].name %> <br>
 	<% else %>
-		<br><b><%= "You need to add more meals to have a menu for the rest of the week" %></b>
+		<br><b><%= "You need to add more meals to show a meal for #{@daysOfWeek[i]}." %></b>
 	<% end %>
 	<% i += 1 %>
 <% end %>
