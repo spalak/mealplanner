@@ -1,37 +1,25 @@
-<h1>Home</h1>
-
-<%= link_to "Sign In", new_user_session_path%>
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<br><br>
+<h2 class="page-title"> Meals </h2>
 
 <%= link_to 'New Meal', new_meal_path %>
 
-<table>
-	
-	<tr>
-		<th width="20%">Meal name</th>
-		<th width="50%">Description</th>
-		<th width="10%">Servings</th>
-		<th width="20%">Other actions</th>
-		<th></th>
-	</tr>
-	<% @meals.each do |meal| %>
-	<tr>
-		<td align=center><%= link_to meal.name, edit_meal_path(meal) %></td>
-		<td align=center><%= meal.description %></td>
-		<td align=center><%= meal.servings %></td>
-		<td align=center>
-			<%= link_to "Edit", edit_meal_path(meal) %>
-			<%= link_to "Delete", meal, method: :delete, data: {confirm: "Are you sure?"} %>
-		</td>
+<ul class="meal-list no-bullet">
 
-	</tr>
+<% @meals.each do |meal| %>
+
+<li id="<%=dom_id(meal) %>" class="row clearfix">
+		<div class="small-7 medium-7 columns"><%=link_to meal.name, edit_meal_path(meal) %></div>
+		<div class="small-3 medium-3 columns"><span class="label round"><%= pluralize(meal.servings.to_s,"servings")%></span></div>
+		<div class="small-2 medium-2 columns"><%= link_to "Delete", meal, method: :delete, data: {confirm: "Are you sure?"} %></div>
+</li>
+
+
+
 	<% end %>
-</table>
-
+</ul>
 <br><br>
 
 <%= render 'form_menu' %>
 
 <br><br>
+
 <%= link_to 'List of Ingredients', ingredients_path %>

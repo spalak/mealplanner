@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Mealplanner</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-</head>
-<body>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+
+  	<% flash.each do |type, message| %>
+	  	<div class="flash alert-box text-center <%= type %>">
+	  		<%=message %>
+	  		<a href="#" class="close"&times;</a>
+	  	</div>
+  	<% end %>
+
+  	<header class="row global_header">
+  		<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+	  		<%= link_to "Meals", root_path %>
+				<% if user_signed_in? %>
+					<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+				<% else %>
+					<%= link_to "Sign In", new_user_session_path %>
+					<%= link_to "Sign Up", new_user_registration_path %> 
+				<% end %>
+			</div>
+  	</header>
+
+  	<div class="row collapse">
+  		<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+    		<%= yield %>
+			</div>
+  	</div>
+
+  	<footer class="row">
+  		<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns text-center">
+  		</div>
+  	</footer>
+
+
+  </body>
 </html>
