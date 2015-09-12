@@ -22,7 +22,7 @@
 	<%= ingredient.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
 	<%= ingredient.label :quantity %>
 	<%= ingredient.number_field :quantity, min: 1 %>
-	<%= ingredient.submit "Add" %>
+	<%= ingredient.submit "Add", :class => "button" %>
 <% end %>
 <br>
 <%= link_to "View all meals", meals_path %> <br><br>

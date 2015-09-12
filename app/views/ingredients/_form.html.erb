@@ -2,6 +2,6 @@
 <%= form_for @ingredients do |ingredient| %>
 	<%= ingredient.label :name %>
 	<%= ingredient.text_field :name %>
-	<%= ingredient.submit "Save" %>
+	<%= ingredient.submit "Save", :class => "button" %>
 
 <% end %>
