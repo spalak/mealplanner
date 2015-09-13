@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'meals#index'
+  devise_scope :user do
+    authenticated :user do
+      root 'meals#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+
+  # root to: 'meals#index'
   resources :ingredients
   resources :meals do
     resources :meals_ingredients
