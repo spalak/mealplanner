@@ -4,6 +4,7 @@ class MealsController < ApplicationController
 
 	def index
 		@meals = current_user.meals.all
+		@users_meals = current_user.users_meals.all
 	end
 
 	def new
@@ -26,7 +27,7 @@ class MealsController < ApplicationController
 	end
 
 	def destroy
-		@meal = current_user.meal.find(params[:id])
+		@meal = current_user.meals.find(params[:id])
 		@meal.destroy
 		redirect_to meals_path
 	end
@@ -77,6 +78,10 @@ class MealsController < ApplicationController
 			end
 		end
 
+	end
+
+	def index_public
+		@meals = Meal.all
 	end
 
 	private

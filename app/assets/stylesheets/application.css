@@ -22,7 +22,7 @@
   left: -50%; 
   width: 200%; 
   height: 200%;
-  z-index: -100;
+  z-index: -10;
 }
 #bg img {
   position: absolute; 
@@ -36,12 +36,13 @@
   z-index: -100;
 }
 
-.signin-panel {
-  background-color: #FFFFFF;
+#login-form {
+  z-index: 10;
 }
 
 form fieldset {
 	background-color: #FFF;
+  z-index: 10;
 }
 
 

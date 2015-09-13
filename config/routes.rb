@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :meals do
     resources :meals_ingredients
+    resources :users_meals
     collection do
-      get 'menu'
+      # get 'menu'
       post 'menu'
+      get 'index_public'
     end
   end
 

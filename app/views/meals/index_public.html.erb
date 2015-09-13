@@ -1,0 +1,14 @@
+<h2 class="page-title">All meals </h2>
+
+<ul class="meal-list no-bullet">
+
+<% @meals.each do |meal| %>
+
+<li id="<%=dom_id(meal) %>" class="row clearfix">
+		<div class="small-7 medium-7 columns"><%=link_to meal.name, edit_meal_path(meal) %></div>
+		<div class="small-3 medium-3 columns"><span class="label round"><%= pluralize(meal.servings.to_s,"servings")%></span></div>
+		<div class="small-2 medium-2 columns"><%= link_to "Save", meal_users_meals_path(meal), method: :post%></div>
+</li>
+
+	<% end %>
+</ul>
