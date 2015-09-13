@@ -4,17 +4,16 @@
 
 <ul class="meal-list no-bullet">
 
-<% @meals.each do |meal| %>
-	<% @users_meals.each do |users_meal| %>
 
-		<li id="<%=dom_id(meal) %>" class="row clearfix">
-		<div class="small-7 medium-7 columns"><%=link_to meal.name, edit_meal_path(meal) %></div>
-		<div class="small-3 medium-3 columns"><span class="label round"><%= pluralize(meal.servings.to_s,"servings")%></span></div>
-		<div class="small-2 medium-2 columns"><%= link_to "Delete", meal_users_meal_path(users_meal, meal), method: :delete, data: {confirm: "Are you sure?"} %></div>
-		</li>
-	<% end %>
+<% @users_meals.each do |users_meal| %>
 
+	<li id="<%=dom_id(users_meal.meal) %>" class="row clearfix">
+	<div class="small-7 medium-7 columns"><%=link_to users_meal.meal.name, edit_meal_path(users_meal.meal) %></div>
+	<div class="small-3 medium-3 columns"><span class="label round"><%= pluralize(users_meal.meal.servings.to_s,"servings")%></span></div>
+	<div class="small-2 medium-2 columns"><%= link_to "Delete", meal_users_meal_path(users_meal.meal, users_meal), method: :delete, data: {confirm: "Are you sure?"} %></div>
+	</li>
 <% end %>
+
 </ul>
 <br><br>
 
