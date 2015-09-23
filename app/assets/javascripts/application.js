@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require_tree .
+//= require_tree ./sitewide
+//= require add-content.js
 
 $(function(){ $(document).foundation(); });

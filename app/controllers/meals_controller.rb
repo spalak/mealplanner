@@ -12,7 +12,8 @@ class MealsController < ApplicationController
 	end
 
 	def edit
-		@meal = current_user.meals.find(params[:id])
+		@user = current_user
+		@meal = Meal.all.find(params[:id])
 	end
 
 	def create
@@ -34,7 +35,7 @@ class MealsController < ApplicationController
 
 
 	def show
-		@meal = current_user.meals.find(params[:id])
+		@meal = Meal.all.find(params[:id])
 	end
 
 	def menu

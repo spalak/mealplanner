@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Incandenza" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -17,6 +17,7 @@
 	  		<a href="#" class="close"&times;</a>
 	  	</div>
 		<% end %>
+		
 
   	
   </head>
@@ -24,12 +25,15 @@
   <body>
  
   	<header>
+  		
+  		
   		<div class="sticky">
   			<nav class="top-bar" data-topbar role="navigation">
 	  			<ul class="title-area">
 	  				<li class="name">
 	  					<h1><%= link_to "Incandenza Mealplanner", meals_path %></h1>
 						</li>
+						<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 					</ul>
 					<section class="top-bar-section">
 						<ul class="right">
@@ -55,13 +59,21 @@
   		<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
     		<%= yield %>
 			</div>
+
   	</div>
 
   	<footer class="row">
   		<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns text-center">
   		</div>
+  		
   	</footer>
-
-
+  	<script src="/js/vendor/jquery.js"></script>
+  	<script src="/js/vendor/fastclick.js"></script>
+  	<script src="/js/foundation.min.js"></script>
+  	<script src="js/foundation/foundation.topbar.js"></script>
+  	<script>
+  		$(document).foundation();
+		</script>
   </body>
+
 </html>
