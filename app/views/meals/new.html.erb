@@ -1,6 +1,21 @@
 <h1>Add a meal</h1>
 
-<%= render 'form_meal' %>
+<%=form_for @meal do |meal| %>
+	<div class="field">
+		<%= meal.label :name %> <br>
+		<%= meal.text_field :name %>
+	</div>
+	<div class="field">
+		<%= meal.label :description %> </br>
+		<%= meal.text_area :description %>
+	</div>
+	<div class="field">
+		<%= meal.label :servings %></br>
+		<%= meal.number_field :servings %>
+	</div> <br>
+	<%= meal.submit "Save", :class => "button" %>
+<% end %>
+<br>
 
 <br>
 <%= link_to "Cancel", meals_path %>

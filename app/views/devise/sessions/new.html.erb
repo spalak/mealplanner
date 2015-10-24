@@ -5,9 +5,11 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <form id="login-form">
     <fieldset>
-      <script type="text/javascript">greeting();</script>
-      <h2>Sign in</h2>
+
+      <h3 id='greeting'></h3>
       
+
+      <h2>Sign in</h2>
         <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true %>
