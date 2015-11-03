@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/about'
+
+  get 'static_pages/contact'
+
   devise_for :users
   devise_scope :user do
     authenticated :user do
